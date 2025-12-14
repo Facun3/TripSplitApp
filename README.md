@@ -1,98 +1,347 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# App de Gastos de Viaje 🧳💰
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Aplicación backend REST API para gestionar **gastos compartidos durante un viaje con amigos**. Todos los participantes pueden cargar, editar y eliminar gastos, y la app calcula automáticamente los balances y las deudas finales de forma simplificada.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 📌 Descripción
 
-## Description
+Esta aplicación permite a un grupo de viajeros:
+- Registrar gastos compartidos durante un viaje
+- Dividir gastos de forma igualitaria o personalizada
+- Calcular automáticamente cuánto debe o le deben a cada participante
+- Simplificar deudas con la menor cantidad de transferencias posibles
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+El proyecto está diseñado para demostrar:
+- ✅ Buen modelado de dominio
+- ✅ Separación de responsabilidades
+- ✅ Claridad en reglas de negocio
+- ✅ Diseño de API REST coherente
+- ✅ Arquitectura escalable con NestJS
 
-## Project setup
+## 🚀 Características
 
-```bash
-$ pnpm install
-```
+- **Gestión de Viajes**: Crear y gestionar viajes con múltiples participantes
+- **Participantes**: Agregar participantes a un viaje con validación de nombres únicos
+- **Gastos**: CRUD completo de gastos con división personalizada
+- **Balances Automáticos**: Cálculo en tiempo real de balances por participante
+- **Simplificación de Deudas**: Algoritmo greedy que minimiza transferencias
+- **API REST**: Endpoints bien documentados con Swagger
+- **Validaciones**: Validación completa de datos con class-validator
+- **Base de Datos**: SQLite para desarrollo (fácil migración a PostgreSQL)
 
-## Compile and run the project
+## 🛠️ Tecnologías
 
-```bash
-# development
-$ pnpm run start
+- **Framework**: [NestJS](https://nestjs.com/) 11.x
+- **Lenguaje**: TypeScript
+- **ORM**: TypeORM 0.3.x
+- **Base de Datos**: SQLite (desarrollo)
+- **Validación**: class-validator, class-transformer
+- **Documentación**: Swagger/OpenAPI
+- **Testing**: Jest
 
-# watch mode
-$ pnpm run start:dev
+## 📋 Requisitos Previos
 
-# production mode
-$ pnpm run start:prod
-```
+- Node.js >= 18.x
+- npm >= 9.x (o pnpm/yarn)
+- Git
 
-## Run tests
+## 🔧 Instalación
 
-```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### 1. Clonar el repositorio
 
 ```bash
-$ pnpm install -g @nestjs/mau
-$ mau deploy
+git clone <repository-url>
+cd app-gastos
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### 2. Instalar dependencias
 
-## Resources
+```bash
+npm install
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+### 3. Verificar instalación
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```bash
+npm run build
+```
 
-## Support
+Si la compilación es exitosa, todo está listo.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## 🚀 Iniciar la Aplicación
 
-## Stay in touch
+### Modo Desarrollo (con hot-reload)
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+npm run start:dev
+```
 
-## License
+El servidor se iniciará en `http://localhost:3000`
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## 📚 Documentación de la API
+
+Una vez que el servidor esté corriendo, accede a la documentación interactiva de Swagger:
+
+```
+http://localhost:3000/api
+```
+
+Desde Swagger puedes:
+- Ver todos los endpoints disponibles
+- Probar cada endpoint directamente
+- Ver los DTOs de request/response
+- Ver ejemplos de respuestas
+
+## 🌐 Endpoints Disponibles
+
+### Viajes
+
+- `POST /trips` - Crear un nuevo viaje
+- `GET /trips/:id` - Obtener información de un viaje
+
+### Participantes
+
+- `POST /trips/:tripId/participants` - Agregar participante a un viaje
+- `GET /trips/:tripId/participants` - Listar todos los participantes de un viaje
+
+### Gastos
+
+- `POST /trips/:tripId/expenses` - Crear un nuevo gasto
+- `GET /trips/:tripId/expenses` - Listar todos los gastos de un viaje
+- `GET /trips/:tripId/expenses/:expenseId` - Obtener un gasto específico
+- `PUT /trips/:tripId/expenses/:expenseId` - Actualizar un gasto
+- `DELETE /trips/:tripId/expenses/:expenseId` - Eliminar un gasto
+
+### Balances
+
+- `GET /trips/:tripId/balances` - Calcular balances de todos los participantes
+- `GET /trips/:tripId/settlements` - Obtener transferencias simplificadas
+
+## 📖 Ejemplos de Uso
+
+### 1. Crear un viaje
+
+```bash
+curl -X POST http://localhost:3000/trips \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Viaje a París",
+    "currency": "EUR"
+  }'
+```
+
+**Respuesta:**
+```json
+{
+  "id": "123e4567-e89b-12d3-a456-426614174000",
+  "name": "Viaje a París",
+  "currency": "EUR",
+  "createdAt": "2024-01-15T10:00:00.000Z",
+  "updatedAt": "2024-01-15T10:00:00.000Z"
+}
+```
+
+### 2. Agregar participantes
+
+```bash
+curl -X POST http://localhost:3000/trips/{tripId}/participants \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Juan Pérez"
+  }'
+```
+
+### 3. Crear un gasto
+
+```bash
+curl -X POST http://localhost:3000/trips/{tripId}/expenses \
+  -H "Content-Type: application/json" \
+  -d '{
+    "description": "Cena en restaurante",
+    "amount": 50000,
+    "date": "2024-01-15",
+    "paidById": "participant-id",
+    "splits": [
+      {
+        "participantId": "participant-1-id",
+        "amount": 25000
+      },
+      {
+        "participantId": "participant-2-id",
+        "amount": 25000
+      }
+    ]
+  }'
+```
+
+**Nota:** Los montos se almacenan en centavos (50000 = 500.00 EUR)
+
+### 4. Calcular balances
+
+```bash
+curl http://localhost:3000/trips/{tripId}/balances
+```
+
+**Respuesta:**
+```json
+[
+  {
+    "participantId": "participant-1-id",
+    "participantName": "Juan Pérez",
+    "balance": 5000
+  },
+  {
+    "participantId": "participant-2-id",
+    "participantName": "María García",
+    "balance": -5000
+  }
+]
+```
+
+**Interpretación:**
+- Balance positivo: le deben dinero
+- Balance negativo: debe dinero
+- Balance cero: está al día
+
+### 5. Obtener transferencias simplificadas
+
+```bash
+curl http://localhost:3000/trips/{tripId}/settlements
+```
+
+**Respuesta:**
+```json
+{
+  "settlements": [
+    {
+      "from": "María García",
+      "to": "Juan Pérez",
+      "amount": 5000
+    }
+  ]
+}
+```
+
+## 📁 Estructura del Proyecto
+
+```
+app-gastos/
+├── src/
+│   ├── trips/              # Módulo de viajes
+│   │   ├── entities/      # Entidad Trip
+│   │   ├── dto/           # DTOs de request/response
+│   │   ├── trips.controller.ts
+│   │   ├── trips.service.ts
+│   │   └── trips.module.ts
+│   │
+│   ├── participants/       # Módulo de participantes
+│   │   ├── entities/
+│   │   ├── dto/
+│   │   ├── participants.controller.ts
+│   │   ├── participants.service.ts
+│   │   └── participants.module.ts
+│   │
+│   ├── expenses/          # Módulo de gastos
+│   │   ├── entities/      # Expense y ExpenseSplit
+│   │   ├── dto/
+│   │   ├── expenses.controller.ts
+│   │   ├── expenses.service.ts
+│   │   └── expenses.module.ts
+│   │
+│   ├── balances/          # Módulo de balances
+│   │   ├── dto/
+│   │   ├── utils/         # DebtSimplifier
+│   │   ├── balances.controller.ts
+│   │   ├── balances.service.ts
+│   │   └── balances.module.ts
+│   │
+│   ├── common/            # Código compartido
+│   │   ├── filters/      # Exception filters
+│   │   └── exceptions/    # Excepciones personalizadas
+│   │
+│   ├── app.module.ts      # Módulo raíz
+│   └── main.ts            # Punto de entrada
+│
+├── test/                  # Tests
+├── package.json
+├── tsconfig.json
+└── README.md
+```
+
+## 🧩 Modelo de Dominio
+
+```
+Trip (Viaje)
+ ├── 1..* Participant (Participante)
+ └── 0..* Expense (Gasto)
+          ├── paidBy → Participant
+          └── 1..* ExpenseSplit (División)
+                    └── participant → Participant
+```
+
+### Reglas de Negocio
+
+- **Viaje**: Mínimo 2 participantes
+- **Participante**: Nombre único dentro del viaje
+- **Gasto**: 
+  - Monto mayor a 0
+  - Pagador debe ser participante del viaje
+  - Al menos un split
+  - Suma de splits = monto del gasto
+- **Balance**: Se calcula en tiempo real (no se persiste)
+  - Balance = Total pagado - Total consumido
+  - Balance positivo = le deben
+  - Balance negativo = debe
+
+## 🧪 Testing
+
+```bash
+# Tests unitarios
+npm run test
+
+# Tests en modo watch
+npm run test:watch
+
+# Tests e2e
+npm run test:e2e
+
+# Cobertura de tests
+npm run test:cov
+```
+
+## 🔍 Scripts Disponibles
+
+```bash
+# Desarrollo
+npm run start:dev      # Inicia con hot-reload     # Formatea código con Prettier
+```
+
+## 🗄️ Base de Datos
+
+### Desarrollo
+
+El proyecto usa **SQLite** para desarrollo. La base de datos se crea automáticamente al iniciar la aplicación:
+
+- Archivo: `gastos.db` (en la raíz del proyecto)
+- Auto-sincronización: Habilitada (`synchronize: true`)
+- Logging: Habilitado para ver las queries SQL
+
+## 📝 Notas Importantes
+
+- Los montos se almacenan en **centavos** (enteros) para evitar problemas de precisión con decimales
+- Los balances se **calculan en tiempo real**, no se persisten en la base de datos
+- El algoritmo de simplificación de deudas usa un enfoque **greedy** para minimizar transferencias
+- La base de datos SQLite (`gastos.db`) está en `.gitignore` y no se versiona
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT.
+
+## 🙏 Agradecimientos
+
+- [NestJS](https://nestjs.com/) - Framework increíble para Node.js
+- [TypeORM](https://typeorm.io/) - ORM potente y flexible
+- [Swagger](https://swagger.io/) - Documentación de API
+
+---
+
+**¿Tienes preguntas o sugerencias?** Abre un issue o crea un pull request. ¡Las contribuciones son bienvenidas! 🎉
