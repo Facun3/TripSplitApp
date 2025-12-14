@@ -5,11 +5,13 @@ import { ExpensesService } from './expenses.service';
 import { Expense } from './entities/expense.entity';
 import { ExpenseSplit } from './entities/expense-split.entity';
 import { TripsModule } from '../trips/trips.module';
+import { ParticipantsModule } from '../participants/participants.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Expense, ExpenseSplit]),
     TripsModule, // Importar para usar TripsService
+    ParticipantsModule, // Importar para usar ParticipantsService
   ],
   controllers: [ExpensesController],
   providers: [ExpensesService],

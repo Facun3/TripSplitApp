@@ -10,7 +10,7 @@ import { TripsModule } from '../trips/trips.module';
 @Module({
   imports: [
     TypeOrmModule.forFeature([Participant, Expense, ExpenseSplit]),
-    TripsModule, // Importar para usar TripsService si es necesario
+    TripsModule, // Importar para usar TripsService
   ],
   controllers: [BalancesController],
   providers: [BalancesService],
