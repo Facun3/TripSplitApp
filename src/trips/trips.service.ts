@@ -1,11 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { Trip } from './entities/trip.entity';
 
 @Injectable()
 export class TripsService {
   constructor(
-    // El repository se inyectará cuando creemos la entidad
+    @InjectRepository(Trip)
+    private tripRepository: Repository<Trip>,
   ) {}
 }
 
